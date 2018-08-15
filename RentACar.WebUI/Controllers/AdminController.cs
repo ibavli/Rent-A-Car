@@ -20,26 +20,41 @@ namespace RentACar.WebUI.Controllers
         }
         public ActionResult Login()
         {
-            //I produce salt
-            var salt = Guid.NewGuid().ToString();
+            ////I produce salt
+            //var salt = Guid.NewGuid().ToString();
 
-            //I create sample admin
-            Admin sampleAdmin = new Admin()
-            {
-                UserName = "adminibo",
-                Name = "ibrahim",
-                Surname = "bavlı",
-                Mail = "ibrahim.bavli35@gamil.com",
-                Salt = salt,
-                Password = "123456789"
-            };
-            //I'm encrypting the admin's password.
-            sampleAdmin.Password = CryptoPass(sampleAdmin.UserName, sampleAdmin.Password, salt);
-            _adminDal.CreateAdmin(sampleAdmin);
+            ////I create sample admin
+            //Admin sampleAdmin = new Admin()
+            //{
+            //    UserName = "adminibo",
+            //    Name = "ibrahim",
+            //    Surname = "bavlı",
+            //    Mail = "ibrahim.bavli35@gamil.com",
+            //    Salt = salt,
+            //    Password = "123456789"
+            //};
+            ////I'm encrypting the admin's password.
+            //sampleAdmin.Password = CryptoPass(sampleAdmin.UserName, sampleAdmin.Password, salt);
+            //_adminDal.CreateAdmin(sampleAdmin);
             return View();
         }
 
-
+        [HttpPost]
+        public ActionResult Login(string Username, string Password)
+        {
+            if(Username.Length<15 && Password.Length < 15)
+            {
+                Admin admin =_adminDal.GetAdmin(Username);
+                if (admin != null)
+                {
+                    if(admin.Password == CryptoPass(Username, Password, admin.Salt))
+                    {
+                        return RedirectToAction("Homepage", "Admin");
+                    }
+                }
+            }
+            return View();
+        }
         private string CryptoPass(string Username, string Password, string Salt)
         {
             string _firstAction = Username + Password;

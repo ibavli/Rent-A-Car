@@ -18,5 +18,10 @@ namespace RentACar.Dal.Concrete.EntityFramework
             db.Admin.Add(admin);
             db.SaveChanges();
         }
+
+        public Admin GetAdmin(string Username)
+        {
+            return db.Admin.Where(a => a.UserName == Username).FirstOrDefault();
+        }
     }
 }
