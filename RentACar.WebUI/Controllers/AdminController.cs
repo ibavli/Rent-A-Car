@@ -18,18 +18,6 @@ namespace RentACar.WebUI.Controllers
         }
         public ActionResult Login()
         {
-
-            //Example data
-            Admin admin = new Admin()
-            {
-                Name = "ibrahim",
-                Surname = "bavlı",
-                Mail = "ibrahim@gmail.com",
-                Mobile = "5065555",
-                Password = "123",
-                UserName = "adminibo"
-            };
-            _adminDal.CreateAdmin(admin);
             return View();
         }
     }
