@@ -3617,6 +3617,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4482,6 +4483,9 @@
     <Content Include="BootstrapTema\vendors\validator\validator.jquery.json" />
     <None Include="packages.config" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminPanel.cshtml" />
+    <Content Include="Views\AdminPanel\Homepage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
