@@ -23,5 +23,12 @@ namespace RentACar.Dal.Concrete.EntityFramework
         {
             return db.Admin.Where(a => a.UserName == Username).FirstOrDefault();
         }
+
+        public void SaveWrongPassword(Admin admin)
+        {
+            Admin _admin = db.Admin.Where(a => a.UserName == admin.UserName).FirstOrDefault();
+            _admin.PasswordEnteredIncorrectly = (_admin.PasswordEnteredIncorrectly + 1);
+            db.SaveChanges();
+        }
     }
 }

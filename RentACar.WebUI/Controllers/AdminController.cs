@@ -51,10 +51,16 @@ namespace RentACar.WebUI.Controllers
                     {
                         return RedirectToAction("Homepage", "Admin");
                     }
+                    else
+                    {
+                        _adminDal.SaveWrongPassword(admin);
+                        TempData["wrongpassword"] = "Parolanızı yanlış girdiniz. 5 kere üst üste yanlış girerseniz hesabınız bloke olacaktır!";
+                    }
                 }
             }
             return View();
         }
+
         private string CryptoPass(string Username, string Password, string Salt)
         {
             string _firstAction = Username + Password;
