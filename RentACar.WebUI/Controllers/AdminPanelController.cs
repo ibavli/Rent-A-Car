@@ -1,6 +1,7 @@
 ﻿using RentACar.Dal.Abstract;
 using RentACar.Dal.Concrete.EntityFramework;
 using RentACar.Entities;
+using RentACar.WebUI.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -11,10 +12,17 @@ namespace RentACar.WebUI.Controllers
         //Kötü yöntem. Fakat şimdilik böyle
         IFuelTypeDal _fuelTypeDal;
         IGearTypeDal _gearTypeDal;
+        IVehicleTypeDal _vehicleTypeDal;
+        ICarDal _carDal;
+        IVehicleDal _vehicleDal;
+
         public AdminPanelController()
         {
             _fuelTypeDal = new EfFuelTypeDal();
             _gearTypeDal = new EfGearTypeDal();
+            _vehicleTypeDal = new EfVehicleTypeDal();
+            _carDal = new EfCarDal();
+            _vehicleDal = new EfVehicleDal();
         }
 
         public ActionResult Homepage()
@@ -49,5 +57,26 @@ namespace RentACar.WebUI.Controllers
             _gearTypeDal.SaveGearType(gearType);
             return RedirectToAction("GearTypeAdd", "AdminPanel");
         }
+
+        public ActionResult VehicleTypeAdd()
+        {
+            List<VehicleType> _listVehicleType = _vehicleTypeDal.GetVehicleTypes();
+            if (_listVehicleType != null) return View(_listVehicleType);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult VehicleTypeAdd(string vehicleType)
+        {
+            _vehicleTypeDal.SaveVehicleType(vehicleType);
+            return RedirectToAction("VehicleTypeAdd", "AdminPanel");
+        }
+
+        public ActionResult CreateCar()
+        {
+            VehicleAndCarViewModel model = new VehicleAndCarViewModel();
+            return View(model);
+        }
+
     }
 }

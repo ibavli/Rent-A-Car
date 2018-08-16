@@ -13,5 +13,8 @@ namespace RentACar.Dal.Concrete.EntityFramework.Manager
         public DbSet<Admin> Admin { get; set; }
         public DbSet<FuelType> FuelType { get; set; }
         public DbSet<GearType> GearType { get; set; }
+        public DbSet<VehicleType> VehicleType { get; set; }
+        public DbSet<Car> Car { get; set; }
+        public DbSet<Vehicle> Vehicle { get; set; }
     }
 }

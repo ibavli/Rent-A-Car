@@ -48,11 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAdminDal.cs" />
+    <Compile Include="Abstract\ICarDal.cs" />
     <Compile Include="Abstract\IFuelTypeDal.cs" />
     <Compile Include="Abstract\IGearTypeDal.cs" />
+    <Compile Include="Abstract\IVehicleDal.cs" />
+    <Compile Include="Abstract\IVehicleTypeDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfAdminDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCarDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfFuelTypeDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfGearTypeDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfVehicleDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfVehicleTypeDal.cs" />
     <Compile Include="Concrete\EntityFramework\Manager\DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
