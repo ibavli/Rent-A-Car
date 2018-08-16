@@ -1,8 +1,6 @@
-﻿@model List<RentACar.Entities.FuelType>
+﻿@model List<RentACar.Entities.GearType>
 @{
-    /**/
-
-    ViewBag.Title = "YakitTipiEkle";
+    ViewBag.Title = "GearTypeAdd";
     Layout = "~/Views/Shared/_LayoutAdminPanel.cshtml";
 }
 
@@ -10,12 +8,12 @@
     <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Mevcut Yakıt Tipleri</h2>
+                <h2>Mevcut Vites Tipleri</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li>
                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
-                   
+
                     <li>
                         <a class="close-link"><i class="fa fa-close"></i></a>
                     </li>
@@ -23,34 +21,34 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <p>Oluşturulan tüm yakıt tipleri aşağıda listelenmiştir.</p>
+                <p>Oluşturulan tüm vites tipleri aşağıda listelenmiştir.</p>
                 <!-- start project list -->
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
                             <th style="width: 1%">#</th>
-                            <th style="width: 80%">Yakıt Tipi</th>
+                            <th style="width: 80%">Vites Tipi</th>
                             <th style="width: 20%">Düzenle</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (Model != null)
                         {
-                            foreach (var fuel in Model)
+                            foreach (var gear in Model)
                             {
-                        <tr>
-                            <td></td>
-                            <td>
-                                <a>@fuel.Fuel</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Düzenle </a>
-                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Sil </a>
-                            </td>
-                        </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <a>@gear.Gear</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Düzenle </a>
+                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Sil </a>
+                                    </td>
+                                </tr>
                             }
                         }
-                        
+
 
                     </tbody>
                 </table>
@@ -64,7 +62,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Yakıt Tipi Ekleme</h2>
+                <h2>Vites Tipi Ekleme</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li>
                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -83,10 +81,10 @@
                 {
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
-                            Yakıt Tipi <span class="required">*</span>
+                            Vites Tipi <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="name" class="form-control col-md-7 col-xs-12" name="fuelType" placeholder="Benzin, Dizel ..." required="required" type="text">
+                            <input id="name" class="form-control col-md-7 col-xs-12" name="gearType" placeholder="Manuel, Otomatik ..." required="required" type="text">
                         </div>
                     </div>
 
@@ -105,3 +103,4 @@
         </div>
     </div>
 </div>
+
