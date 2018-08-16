@@ -4486,6 +4486,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LayoutAdminPanel.cshtml" />
     <Content Include="Views\AdminPanel\Homepage.cshtml" />
+    <Content Include="Views\AdminPanel\YakitTipiEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
