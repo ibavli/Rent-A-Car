@@ -74,9 +74,26 @@ namespace RentACar.WebUI.Controllers
 
         public ActionResult CreateCar()
         {
-            VehicleAndCarViewModel model = new VehicleAndCarViewModel();
+            VehicleAndCarViewModel model = new VehicleAndCarViewModel()
+            {
+                ListFuelType = _fuelTypeDal.GetFuelTypes(),
+                ListGearType = _gearTypeDal.GetGearTypes(),
+                ListVehicleType = _vehicleTypeDal.GetVehicleTypes()
+            };
             return View(model);
         }
+        [HttpPost]
+        public ActionResult CreateCar(VehicleAndCarViewModel deneme)
+        {
+            return RedirectToAction("CreateCar", "AdminPanel");
+        }
 
+        public ActionResult CreateBranch()
+        {
+            CityAndCountyViewModel model = new CityAndCountyViewModel();
+            
+
+            return View(model);
+        }
     }
 }

@@ -3622,6 +3622,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CityAndCountyViewModel.cs" />
     <Compile Include="ViewModels\VehicleAndCarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4491,6 +4492,7 @@
     <Content Include="Views\AdminPanel\GearTypeAdd.cshtml" />
     <Content Include="Views\AdminPanel\VehicleTypeAdd.cshtml" />
     <Content Include="Views\AdminPanel\CreateCar.cshtml" />
+    <Content Include="Views\AdminPanel\CreateBranch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

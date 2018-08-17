@@ -1,0 +1,22 @@
+﻿@model RentACar.WebUI.ViewModels.CityAndCountyViewModel
+@{
+    ViewBag.Title = "CreateBranch";
+    Layout = "~/Views/Shared/_LayoutAdminPanel.cshtml";
+}
+
+<h2>CreateBranch</h2>
+
+@foreach (var item in Model.Cities)
+{
+    @item.CityName
+}
+
+<br /><hr /><br />
+
+@foreach (var item in Model.Cities)
+{
+    foreach (var item2 in item.County)
+    {
+        @item2
+    }
+}
