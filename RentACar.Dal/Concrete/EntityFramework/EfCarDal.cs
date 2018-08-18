@@ -18,8 +18,10 @@ namespace RentACar.Dal.Concrete.EntityFramework
             return db.Car.ToList();
         }
 
-        public void SaveCar(Car car)
+        public void SaveCar(Car car, Vehicle vehicle)
         {
+            car.Vehicle = vehicle;
+            car.CarId = vehicle.VehicleId;
             db.Car.Add(car);
             db.SaveChanges();
         }

@@ -47,6 +47,6 @@ namespace RentACar.WebUI.ViewModels
                 return _cities;
             }
         }
-        public Branch Branch { get; set; }
+        
     }
 }

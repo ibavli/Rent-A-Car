@@ -11,6 +11,6 @@ namespace RentACar.Dal.Abstract
     {
         List<Car> GetCars();
 
-        void SaveCar(Car car);      
+        void SaveCar(Car car, Vehicle vehicle);      
     }
 }

@@ -83,17 +83,33 @@ namespace RentACar.WebUI.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult CreateCar(VehicleAndCarViewModel deneme)
+        public ActionResult CreateCar(VehicleAndCarViewModel model)
         {
+            _carDal.SaveCar(model.Car, model.Vehicle);
             return RedirectToAction("CreateCar", "AdminPanel");
         }
 
         public ActionResult CreateBranch()
         {
+            Branch branch = new Branch();
+            return View(branch);
+        }
+        [HttpPost]
+        public ActionResult CreateBranch(string _City, string _county, Branch branch)
+        {
+            return RedirectToAction("CreateBranch", "AdminPanel");
+        }
+        public JsonResult GetCities()
+        {
             CityAndCountyViewModel model = new CityAndCountyViewModel();
-            
+            return Json(model.Cities, JsonRequestBehavior.AllowGet);
+        }
 
-            return View(model);
+        public JsonResult GetCountyByCity(string cityName)
+        {
+            CityAndCountyViewModel model = new CityAndCountyViewModel();
+            var result = model.Cities.Find(x => x.CityName == cityName);
+            return Json(result.County, JsonRequestBehavior.AllowGet);
         }
     }
 }
