@@ -15,7 +15,7 @@ namespace RentACar.WebUI.Controllers
         IVehicleTypeDal _vehicleTypeDal;
         ICarDal _carDal;
         IVehicleDal _vehicleDal;
-
+        IBranchDal _branchDal;
         public AdminPanelController()
         {
             _fuelTypeDal = new EfFuelTypeDal();
@@ -23,6 +23,7 @@ namespace RentACar.WebUI.Controllers
             _vehicleTypeDal = new EfVehicleTypeDal();
             _carDal = new EfCarDal();
             _vehicleDal = new EfVehicleDal();
+            _branchDal = new EfBranchDal();
         }
 
         public ActionResult Homepage()
@@ -91,12 +92,27 @@ namespace RentACar.WebUI.Controllers
 
         public ActionResult CreateBranch()
         {
-            Branch branch = new Branch();
-            return View(branch);
+            return View(_carDal.GetCars());
         }
         [HttpPost]
-        public ActionResult CreateBranch(string _City, string _county, Branch branch)
+        public ActionResult CreateBranch(string BranchName, string _City, string _county, params string[] checks)
         {
+            List<Car> _cars = new List<Car>();
+            
+            if (BranchName == null) BranchName = _City + " / " + _county;
+            else
+            {
+                Branch branch = new Branch();
+                branch.BranchName = BranchName;
+                branch.BranchCounty = _county;
+                branch.BranchCity = _City;
+                foreach (var car in checks)
+                {
+                    _cars.Add(_carDal.GetCarByLicensePlate(car));
+                }
+                branch.BranchCars = _cars;
+                
+            }
             return RedirectToAction("CreateBranch", "AdminPanel");
         }
         public JsonResult GetCities()

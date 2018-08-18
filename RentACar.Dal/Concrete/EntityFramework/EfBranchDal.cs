@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentACar.Dal.Concrete
+namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfBranchDal : IBranchDal
     {
@@ -20,12 +20,12 @@ namespace RentACar.Dal.Concrete
 
         public List<Branch> GetBranchesCityName(string city)
         {
-            return db.Branch.Where(c => c.BranchCity == city).ToList();
+            return db.Branch.Where(b=>b.BranchCity == city).ToList();
         }
 
         public List<Branch> GetBranchesCountyName(string county)
         {
-            return db.Branch.Where(c => c.BranchCounty == county).ToList();
+            return db.Branch.Where(b => b.BranchCounty == county).ToList();
         }
 
         public void SaveBranch(Branch branch)

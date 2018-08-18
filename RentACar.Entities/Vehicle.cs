@@ -30,5 +30,8 @@ namespace RentACar.Entities
         public string VehicleFuel { get; set; }
 
         public int VehicleAgeLimit { get; set; }
+
+        public string LicensePlate { get; set; }
+
     }
 }

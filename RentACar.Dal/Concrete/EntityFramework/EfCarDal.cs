@@ -13,6 +13,11 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public Car GetCarByLicensePlate(string licensePlate)
+        {
+            return db.Car.Where(c => c.Vehicle.LicensePlate == licensePlate).FirstOrDefault();
+        }
+
         public List<Car> GetCars()
         {
             return db.Car.ToList();

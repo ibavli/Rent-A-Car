@@ -15,6 +15,6 @@ namespace RentACar.Dal.Abstract
 
         List<Branch> GetBranchesCountyName(string county);
 
-        void SubeKaydet(Branch branch);
+        void SaveBranch(Branch branch);
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Abstract\IVehicleTypeDal.cs" />
     <Compile Include="Concrete\EfBranchDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfAdminDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfBranchDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCarDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfFuelTypeDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfGearTypeDal.cs" />
