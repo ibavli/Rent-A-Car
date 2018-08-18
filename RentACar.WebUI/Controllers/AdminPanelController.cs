@@ -3,6 +3,8 @@ using RentACar.Dal.Concrete.EntityFramework;
 using RentACar.Entities;
 using RentACar.WebUI.ViewModels;
 using System.Collections.Generic;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 
 namespace RentACar.WebUI.Controllers
@@ -84,8 +86,18 @@ namespace RentACar.WebUI.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult CreateCar(VehicleAndCarViewModel model)
+        public ActionResult CreateCar(VehicleAndCarViewModel model, HttpPostedFileBase CarsPhoto)
         {
+            if (CarsPhoto != null)
+            {
+                FileInfo fi = new FileInfo(CarsPhoto.FileName);
+                string type = Path.GetExtension(CarsPhoto.FileName);
+                string name = model.Vehicle.VehicleId + type;
+                //string adi = user.Deu_Bbt_Ogrenci_Numarasi + tip;
+                var _path = Path.Combine(Server.MapPath("~/CarsPhotos/"), name);
+                CarsPhoto.SaveAs(_path);
+                model.Vehicle.VehiclePhoto = name;
+            }
             _carDal.SaveCar(model.Car, model.Vehicle);
             return RedirectToAction("CreateCar", "AdminPanel");
         }
@@ -130,6 +142,17 @@ namespace RentACar.WebUI.Controllers
         public ActionResult GetBranches()
         {
             return View(_branchDal.GetBranches());
+        }
+
+        public ActionResult GetCars()
+        {
+            return View(_carDal.GetCars());
+        }
+
+        public PartialViewResult GetCarPartialView(string licensePlate)
+        {
+            Car car = _carDal.GetCarByLicensePlate(licensePlate);
+            return PartialView("_GetCarPartialView", car);
         }
     }
 }

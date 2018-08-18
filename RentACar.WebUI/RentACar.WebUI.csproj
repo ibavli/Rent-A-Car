@@ -4494,6 +4494,8 @@
     <Content Include="Views\AdminPanel\CreateCar.cshtml" />
     <Content Include="Views\AdminPanel\CreateBranch.cshtml" />
     <Content Include="Views\AdminPanel\GetBranches.cshtml" />
+    <Content Include="Views\AdminPanel\GetCars.cshtml" />
+    <Content Include="Views\Shared\_GetCarPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4503,6 +4505,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CarsPhotos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

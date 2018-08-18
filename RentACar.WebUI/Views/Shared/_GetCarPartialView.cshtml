@@ -1,0 +1,61 @@
+﻿@model RentACar.Entities.Car
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>@(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel + " (" + Model.Vehicle.LicensePlate + ")")</h2>
+        <ul class="nav navbar-right panel_toolbox">
+           
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="col-md-7 col-sm-7 col-xs-12">
+            <div class="product-image">
+                <img src="~/CarsPhotos/@Model.Vehicle.VehiclePhoto" alt="@Model.Vehicle.LicensePlate" />
+            </div>         
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
+            <h3 class="prod_title">@(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel + " (" + Model.Vehicle.LicensePlate + ")")</h3>
+            <h4 style="color:red">Marka Model</h4>
+            <p>
+                @(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel)
+            </p>
+            <h4 style="color:red">Model Yılı</h4>
+            <p>
+                @Model.Vehicle.VehicleModelYear
+            </p>
+            <h4 style="color:red">Yakıt Türü</h4>
+            <p>
+                @Model.Vehicle.VehicleFuel
+            </p>
+            <h4 style="color:red">Ehliyet Yaş Sınırı</h4>
+            <p>
+                @Model.Vehicle.VehicleAgeLimit
+            </p>
+            <h4 style="color:red">Vites Türü</h4>
+            <p>
+                @Model.GearType
+            </p>
+            <h4 style="color:red">Koltuk Sayısı</h4>
+            <p>
+                @Model.SeatingCapacity
+            </p>
+            <h4 style="color:red">Kasa Tipi</h4>
+            <p>
+                @Model.VehicleType
+            </p>
+            <div class="">
+                <div class="product_price">
+                    <h1 class="price">@Model.Vehicle.VehiclePrice &#8378;</h1>
+                    <span class="price-tax">Günlük Kiralama Fiyatıdır.</span>
+                    <br>
+                </div>
+            </div>
+
+
+        </div>
+
+        
+    </div>
+</div>
