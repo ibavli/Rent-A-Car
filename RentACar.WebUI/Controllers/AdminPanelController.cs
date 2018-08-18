@@ -97,22 +97,21 @@ namespace RentACar.WebUI.Controllers
         [HttpPost]
         public ActionResult CreateBranch(string BranchName, string _City, string _county, params string[] checks)
         {
-            List<Car> _cars = new List<Car>();
+            //List<Car> _cars = new List<Car>();    
+            List<string> _licensePlate = new List<string>();
+            if (BranchName == "") BranchName = _City + " / " + _county;
             
-            if (BranchName == null) BranchName = _City + " / " + _county;
-            else
-            {
                 Branch branch = new Branch();
                 branch.BranchName = BranchName;
                 branch.BranchCounty = _county;
                 branch.BranchCity = _City;
                 foreach (var car in checks)
                 {
-                    _cars.Add(_carDal.GetCarByLicensePlate(car));
+                    //_cars.Add(_carDal.GetCarByLicensePlate(car));
+                    _licensePlate.Add(car);
                 }
-                branch.BranchCars = _cars;
-                
-            }
+                _branchDal.SaveBranch(branch, _licensePlate);
+            
             return RedirectToAction("CreateBranch", "AdminPanel");
         }
         public JsonResult GetCities()
@@ -126,6 +125,11 @@ namespace RentACar.WebUI.Controllers
             CityAndCountyViewModel model = new CityAndCountyViewModel();
             var result = model.Cities.Find(x => x.CityName == cityName);
             return Json(result.County, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult GetBranches()
+        {
+            return View(_branchDal.GetBranches());
         }
     }
 }

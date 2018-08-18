@@ -28,8 +28,15 @@ namespace RentACar.Dal.Concrete.EntityFramework
             return db.Branch.Where(b => b.BranchCounty == county).ToList();
         }
 
-        public void SaveBranch(Branch branch)
+        public void SaveBranch(Branch branch, List<string> licensePlate)
         {
+            List<Car> _cars = new List<Car>();
+            foreach (var plate in licensePlate)
+            {
+                //_cars.Add(_carDal.GetCarByLicensePlate(car));
+                _cars.Add(db.Car.Where(c => c.Vehicle.LicensePlate == plate).FirstOrDefault());
+            }
+            branch.BranchCars = _cars;
             db.Branch.Add(branch);
             db.SaveChanges();
         }

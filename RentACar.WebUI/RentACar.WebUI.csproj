@@ -4493,6 +4493,7 @@
     <Content Include="Views\AdminPanel\VehicleTypeAdd.cshtml" />
     <Content Include="Views\AdminPanel\CreateCar.cshtml" />
     <Content Include="Views\AdminPanel\CreateBranch.cshtml" />
+    <Content Include="Views\AdminPanel\GetBranches.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
