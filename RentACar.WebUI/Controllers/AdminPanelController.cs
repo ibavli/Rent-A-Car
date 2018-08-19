@@ -67,7 +67,12 @@ namespace RentACar.WebUI.Controllers
             _gearTypeDal.SaveGearType(gearType);
             return RedirectToAction("GearTypeAdd", "AdminPanel");
         }
-
+        public ActionResult DeleteGearType(string _id)
+        {
+            Guid id = new Guid(_id);
+            _gearTypeDal.DeleteGearType(id);
+            return RedirectToAction("GearTypeAdd", "AdminPanel");
+        }
         public ActionResult VehicleTypeAdd()
         {
             List<VehicleType> _listVehicleType = _vehicleTypeDal.GetVehicleTypes();

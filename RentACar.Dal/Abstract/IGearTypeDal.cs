@@ -12,5 +12,7 @@ namespace RentACar.Dal.Abstract
         List<GearType> GetGearTypes();
 
         void SaveGearType(string gearType);
+
+        void DeleteGearType(Guid id);
     }
 }

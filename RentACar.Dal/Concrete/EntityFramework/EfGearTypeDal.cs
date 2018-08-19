@@ -13,6 +13,13 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public void DeleteGearType(Guid id)
+        {
+            GearType gearType = db.GearType.Where(f => f.GearTypeId == id).FirstOrDefault();
+            db.GearType.Remove(gearType);
+            db.SaveChanges();
+        }
+
         public List<GearType> GetGearTypes()
         {
             return db.GearType.ToList();
