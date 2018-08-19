@@ -117,7 +117,12 @@ namespace RentACar.WebUI.Controllers
                 CarsPhoto.SaveAs(_path);
                 model.Vehicle.VehiclePhoto = name;
             }
-            _carDal.SaveCar(model.Car, model.Vehicle);
+            if (ModelState.IsValid)
+            {
+                TempData["success"] = model.Vehicle.LicensePlate + " plakalı otomobil başarıyla oluşturuldu.";
+                _carDal.SaveCar(model.Car, model.Vehicle);
+            }
+                
             return RedirectToAction("CreateCar", "AdminPanel");
         }
 

@@ -14,10 +14,11 @@ namespace RentACar.Entities
 
         public virtual Vehicle Vehicle{ get; set; }
 
+        [Required]
         public string GearType { get; set; }
-
+        [Required]
         public string VehicleType { get; set; }
-
+        [Required]
         public int SeatingCapacity { get; set; }
     }
 }

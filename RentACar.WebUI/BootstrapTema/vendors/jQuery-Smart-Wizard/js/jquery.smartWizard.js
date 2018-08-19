@@ -21,8 +21,10 @@ function SmartWizard(target, options) {
     this.elmStepContainer = $('<div></div>').addClass("stepContainer");
     this.loader = $('<div>Loading</div>').addClass("loader");
     this.buttons = {
-        next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
-        previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
+        //next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
+        next: $('<button type="button">' + options.labelNext + '</button>').attr("id","_nextBtn").addClass("buttonNext"),
+        //previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
+        previous: $('<button type="submit">' + options.labelPrevious + '</button>').addClass("buttonPrevious"),
         //finish  : $('<button type="submit">'+options.labelFinish+'</button>').attr("href","~/AdminPanel/CreateCar").addClass("buttonFinish")
         finish: $('<button type="submit">' + options.labelFinish + '</button>').addClass("buttonFinish")
     };
