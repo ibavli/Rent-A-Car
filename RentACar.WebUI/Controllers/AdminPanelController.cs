@@ -2,6 +2,7 @@
 using RentACar.Dal.Concrete.EntityFramework;
 using RentACar.Entities;
 using RentACar.WebUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
@@ -47,6 +48,12 @@ namespace RentACar.WebUI.Controllers
             return RedirectToAction("FuelTypeAdd", "AdminPanel");
         }
 
+        public ActionResult DeleteFuelType(string _id)
+        {
+            Guid id = new Guid(_id);
+            _fuelTypeDal.DeleteFuelType(id);
+            return RedirectToAction("FuelTypeAdd", "AdminPanel");
+        }
         public ActionResult GearTypeAdd()
         {
             List<GearType> _listGearType = _gearTypeDal.GetGearTypes();

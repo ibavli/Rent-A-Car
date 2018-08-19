@@ -3623,6 +3623,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CityAndCountyViewModel.cs" />
+    <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\VehicleAndCarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

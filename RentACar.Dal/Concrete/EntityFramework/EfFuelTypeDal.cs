@@ -13,6 +13,13 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public void DeleteFuelType(Guid id)
+        {
+            FuelType fuelType = db.FuelType.Where(f => f.FuelTypeId == id).FirstOrDefault();
+            db.FuelType.Remove(fuelType);
+            db.SaveChanges();
+        }
+
         public List<FuelType> GetFuelTypes()
         {
             return db.FuelType.ToList();
