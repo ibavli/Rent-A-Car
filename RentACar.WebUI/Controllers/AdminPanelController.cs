@@ -31,6 +31,11 @@ namespace RentACar.WebUI.Controllers
 
         public ActionResult Homepage()
         {
+            var ASDF = _branchDal.GetBranches();
+            foreach (var item in ASDF)
+            {
+                var asdf = item;
+            }
             return View();
         }
 
@@ -122,7 +127,7 @@ namespace RentACar.WebUI.Controllers
                 TempData["success"] = model.Vehicle.LicensePlate + " plakalı otomobil başarıyla oluşturuldu.";
                 _carDal.SaveCar(model.Car, model.Vehicle);
             }
-                
+
             return RedirectToAction("CreateCar", "AdminPanel");
         }
 
@@ -137,6 +142,8 @@ namespace RentACar.WebUI.Controllers
             List<string> _licensePlate = new List<string>();
             if (BranchName == "") BranchName = _City + " / " + _county;
             
+            if(_City!="" && _county!=null && _county != "" && checks!=null)
+            {
                 Branch branch = new Branch();
                 branch.BranchName = BranchName;
                 branch.BranchCounty = _county;
@@ -147,7 +154,10 @@ namespace RentACar.WebUI.Controllers
                     _licensePlate.Add(car);
                 }
                 _branchDal.SaveBranch(branch, _licensePlate);
+                TempData["success"] = BranchName + " şubesi başarıyla oluşturuldu.";
+            }
             
+
             return RedirectToAction("CreateBranch", "AdminPanel");
         }
         public JsonResult GetCities()
@@ -162,7 +172,7 @@ namespace RentACar.WebUI.Controllers
             var result = model.Cities.Find(x => x.CityName == cityName);
             return Json(result.County, JsonRequestBehavior.AllowGet);
         }
-        
+
         public ActionResult GetBranches()
         {
             return View(_branchDal.GetBranches());

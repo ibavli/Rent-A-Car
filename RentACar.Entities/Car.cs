@@ -9,6 +9,10 @@ namespace RentACar.Entities
 {
     public class Car
     {
+        public Car()
+        {
+            this.Branches = new List<Branch>();
+        }
         [Key]
         public Guid CarId { get; set; }
 
@@ -20,5 +24,7 @@ namespace RentACar.Entities
         public string VehicleType { get; set; }
         [Required]
         public int SeatingCapacity { get; set; }
+
+        public virtual List<Branch> Branches { get; set; }
     }
 }
