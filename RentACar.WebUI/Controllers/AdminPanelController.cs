@@ -87,6 +87,13 @@ namespace RentACar.WebUI.Controllers
             return RedirectToAction("VehicleTypeAdd", "AdminPanel");
         }
 
+        public ActionResult DeleteVehicleType(string _id)
+        {
+            Guid id = new Guid(_id);
+            _vehicleTypeDal.DeleteVehicleType(id);
+            return RedirectToAction("VehicleTypeAdd", "AdminPanel");
+        }
+
         public ActionResult CreateCar()
         {
             VehicleAndCarViewModel model = new VehicleAndCarViewModel()

@@ -28,7 +28,7 @@
                         <tr>
                             <th style="width: 1%">#</th>
                             <th style="width: 80%">Kasa Tipi</th>
-                            <th style="width: 20%">Düzenle</th>
+                            <th style="width: 20%"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,8 +42,7 @@
                                         <a>@type.TypeOfVehicle</a>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Düzenle </a>
-                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Sil </a>
+                                        <button id="@type.VehicleTypeId" type="button" class="btn btn-danger"> <i class="fa fa-trash-o"></i> Sil</button>
                                     </td>
                                 </tr>
                             }
@@ -104,3 +103,25 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $("button").click(function () {
+        if (this.id != "send") {
+             $.ajax({
+                url: '@Url.Action("DeleteVehicleType", "AdminPanel")',
+                type: 'POST',
+                data: "{'_id':'" + this.id + "'}",
+                contentType: "application/json; charset=utf-8",
+           dataType: 'html',
+           success: function (data) {
+               location.reload();
+           },
+           error: function () {
+               alert("Hata alındı.");
+           }
+            });
+        }
+
+    });
+</script>

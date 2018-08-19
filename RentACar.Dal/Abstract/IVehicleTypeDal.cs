@@ -12,5 +12,7 @@ namespace RentACar.Dal.Abstract
         void SaveVehicleType(string vehicleType);
 
         List<VehicleType> GetVehicleTypes();
+
+        void DeleteVehicleType(Guid id);
     }
 }
