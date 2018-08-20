@@ -1,6 +1,7 @@
 ﻿using RentACar.Dal.Abstract;
 using RentACar.Dal.Concrete.EntityFramework;
 using RentACar.Entities;
+using RentACar.WebUI.Filters;
 using RentACar.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace RentACar.WebUI.Controllers
 {
+    [AuthFilter]
     public class AdminPanelController : Controller
     {
         //Kötü yöntem. Fakat şimdilik böyle

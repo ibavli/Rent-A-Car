@@ -17,5 +17,6 @@ namespace RentACar.Dal.Abstract
 
         void DeleteCar(string licensePlate);
 
+        int GetCarCount();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using RentACar.Dal.Abstract;
 using RentACar.Dal.Concrete.EntityFramework;
 using RentACar.Entities;
+using RentACar.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,49 +14,73 @@ namespace RentACar.WebUI.Controllers
 {
     public class AdminController : Controller
     {
+
+        //İleride düzeltilecek.
         IAdminDal _adminDal;
+        ICarDal _carDal;
+        IBranchDal _branchDal;
         public AdminController()
         {
             _adminDal = new EfAdminDal();
+            _carDal = new EfCarDal();
+            _branchDal = new EfBranchDal();
         }
         public ActionResult Login()
         {
-            ////I produce salt
-            //var salt = Guid.NewGuid().ToString();
+            Admin admin = _adminDal.GetAdmin("adminibo");
+            if (admin == null)
+            {
+                //I produce salt
+                var salt = Guid.NewGuid().ToString();
 
-            ////I create sample admin
-            //Admin sampleAdmin = new Admin()
-            //{
-            //    UserName = "adminibo",
-            //    Name = "ibrahim",
-            //    Surname = "bavlı",
-            //    Mail = "ibrahim.bavli35@gamil.com",
-            //    Salt = salt,
-            //    Password = "123456789"
-            //};
-            ////I'm encrypting the admin's password.
-            //sampleAdmin.Password = CryptoPass(sampleAdmin.UserName, sampleAdmin.Password, salt);
-            //_adminDal.CreateAdmin(sampleAdmin);
+                //I create sample admin
+                Admin sampleAdmin = new Admin()
+                {
+                    UserName = "adminibo",
+                    Name = "ibrahim",
+                    Surname = "bavlı",
+                    Mail = "ibrahim.bavli35@gamil.com",
+                    Salt = salt,
+                    Password = "123456789",
+                    IsAccountActive = true
+                };
+                //I'm encrypting the admin's password.
+                sampleAdmin.Password = CryptoPass(sampleAdmin.UserName, sampleAdmin.Password, salt);
+                _adminDal.CreateAdmin(sampleAdmin);
+            }
+            Session["login"] = null;
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(string Username, string Password)
         {
-            if(Username.Length<15 && Password.Length < 15)
+            if (Username.Length < 15 && Password.Length < 15)
             {
-                Admin admin =_adminDal.GetAdmin(Username);
+                Admin admin = _adminDal.GetAdmin(Username);
                 if (admin != null)
                 {
-                    if(admin.Password == CryptoPass(Username, Password, admin.Salt))
+                    if (admin.Password == CryptoPass(Username, Password, admin.Salt))
                     {
-                        return RedirectToAction("Homepage", "Admin");
+                        if (admin.IsAccountActive == true)
+                        {
+                            MySessionModel mySessionModel = new MySessionModel();
+                            mySessionModel.Id = admin.AdminId;
+                            mySessionModel.UserName = admin.UserName;
+                            mySessionModel.NameSurname = admin.Name + " " + admin.Surname;
+                            mySessionModel.CarCount = _carDal.GetCarCount();
+                            mySessionModel.BranchCount = _branchDal.GetBranchCount();
+                            Session["login"] = mySessionModel;
+                            return RedirectToAction("Homepage", "AdminPanel");
+                        }                  
                     }
                     else
                     {
                         _adminDal.SaveWrongPassword(admin);
                         TempData["wrongpassword"] = "Parolanızı yanlış girdiniz. 5 kere üst üste yanlış girerseniz hesabınız bloke olacaktır!";
                     }
+
+
                 }
             }
             return View();

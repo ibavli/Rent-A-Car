@@ -31,6 +31,11 @@ namespace RentACar.Dal.Concrete.EntityFramework
             return db.Car.Where(c => c.Vehicle.LicensePlate == licensePlate).FirstOrDefault();
         }
 
+        public int GetCarCount()
+        {
+            return db.Car.ToList().Count();
+        }
+
         public List<Car> GetCars()
         {
             return db.Car.ToList();

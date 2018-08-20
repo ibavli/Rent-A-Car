@@ -13,6 +13,11 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public int GetBranchCount()
+        {
+            return db.Branch.ToList().Count();
+        }
+
         public List<Branch> GetBranches()
         {
             return db.Branch.ToList();
