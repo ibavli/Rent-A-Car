@@ -1,19 +1,19 @@
 ﻿@model RentACar.Entities.Car
 
-
+@{ 
+    var denemeeee = Model.Vehicle.LicensePlate;
+}
 <div class="x_panel">
     <div class="x_title">
         <h2>@(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel + " (" + Model.Vehicle.LicensePlate + ")")</h2>
-        <ul class="nav navbar-right panel_toolbox">
-           
-        </ul>
+        <ul class="nav navbar-right panel_toolbox"></ul>
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
         <div class="col-md-7 col-sm-7 col-xs-12">
             <div class="product-image">
                 <img src="~/CarsPhotos/@Model.Vehicle.VehiclePhoto" alt="@Model.Vehicle.LicensePlate" />
-            </div>         
+            </div>
         </div>
         <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
             <h3 class="prod_title">@(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel + " (" + Model.Vehicle.LicensePlate + ")")</h3>
@@ -21,6 +21,8 @@
             <p>
                 @(Model.Vehicle.VehicleBrand + " " + Model.Vehicle.VehicleModel)
             </p>
+            <h4 style="color:red">Plaka</h4>
+            <p id="_pLicensePlate">@Model.Vehicle.LicensePlate</p>
             <h4 style="color:red">Model Yılı</h4>
             <p>
                 @Model.Vehicle.VehicleModelYear
@@ -52,10 +54,42 @@
                     <br>
                 </div>
             </div>
-
+            <p>
+                @*<img src="https://cdn1.iconfinder.com/data/icons/nuove/128x128/actions/button_cancel.png" height="50" width="50" id="@Model.Vehicle.LicensePlate"/>*@
+                <button class="btn btn-danger btn-lg" type="button" id="@Model.Vehicle.LicensePlate" name="deneme_">Sil</button>
+            </p>
 
         </div>
 
-        
+
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('button[name="deneme_"]').click(function () {
+            $.ajax({
+                url: '@Url.Action("DeleteCar", "AdminPanel")',
+                type: 'POST',
+                data: "{'licensePlate':'" + this.id + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'html',
+                success: function (data) {
+                    //$("getir2").remove();
+                    location.reload();
+                    //alert("Yorumunuz paylaşıldı");
+                },
+                error: function () {
+                    alert("Hata alındı.");
+                }
+            });
+        });
+           
+           
+        
+    });
+
+
+
+
+</script>

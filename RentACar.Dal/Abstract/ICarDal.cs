@@ -13,6 +13,9 @@ namespace RentACar.Dal.Abstract
 
         Car GetCarByLicensePlate(string licensePlate);
 
-        void SaveCar(Car car, Vehicle vehicle);      
+        void SaveCar(Car car, Vehicle vehicle);
+
+        void DeleteCar(string licensePlate);
+
     }
 }

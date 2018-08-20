@@ -12,5 +12,6 @@ namespace RentACar.Dal.Abstract
         List<Vehicle> GetVehicles();
 
         void SaveVehicle(Vehicle vehicle);
+
     }
 }

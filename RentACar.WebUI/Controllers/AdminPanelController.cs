@@ -188,5 +188,12 @@ namespace RentACar.WebUI.Controllers
             Car car = _carDal.GetCarByLicensePlate(licensePlate);
             return PartialView("_GetCarPartialView", car);
         }
+
+        public ActionResult DeleteCar(string licensePlate)
+        {
+            _carDal.DeleteCar(licensePlate);
+            TempData["deleted"] = licensePlate + " plakalı otomobil silinmiştir !";
+            return RedirectToAction("GetCars", "AdminPanel");
+        }
     }
 }

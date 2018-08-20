@@ -13,6 +13,19 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public void DeleteCar(string licensePlate)
+        {
+            Car car = db.Car.Where(c => c.Vehicle.LicensePlate == licensePlate).FirstOrDefault();
+            Vehicle vehicle = db.Vehicle.Where(c => c.LicensePlate == licensePlate).FirstOrDefault();
+            if (car != null)
+            {
+                db.Car.Remove(car);
+                db.Vehicle.Remove(vehicle);
+                db.SaveChanges();
+            }
+            
+        }
+
         public Car GetCarByLicensePlate(string licensePlate)
         {
             return db.Car.Where(c => c.Vehicle.LicensePlate == licensePlate).FirstOrDefault();
