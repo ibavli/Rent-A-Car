@@ -3778,6 +3778,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CityAndCountyViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\iBavliHomePageViewModel.cs" />
     <Compile Include="ViewModels\MySessionModel.cs" />
     <Compile Include="ViewModels\VehicleAndCarViewModel.cs" />
   </ItemGroup>
@@ -4777,6 +4778,7 @@
     <Content Include="Views\Shared\_GetCarPartialView.cshtml" />
     <Content Include="Views\Shared\_LayoutiBavli.cshtml" />
     <Content Include="Views\iBavli\AnaSayfa.cshtml" />
+    <Content Include="Views\iBavli\Sonuclar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

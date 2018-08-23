@@ -15,6 +15,8 @@ namespace RentACar.Dal.Abstract
 
         List<Branch> GetBranchesCountyName(string county);
 
+        List<Car> GetBranchesCars(string branchName);
+
         void SaveBranch(Branch branch, List<string> licensePlate);
 
         int GetBranchCount();

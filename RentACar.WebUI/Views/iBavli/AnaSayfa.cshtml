@@ -1,4 +1,4 @@
-﻿
+﻿@model RentACar.WebUI.ViewModels.iBavliHomePageViewModel
 @{
     ViewBag.Title = "AnaSayfa";
     Layout = "~/Views/Shared/_LayoutiBavli.cshtml";
@@ -21,16 +21,18 @@
                 <h4 class="text-white pb-30">HEMEN REZERVASYON YAP!</h4>
                 <form class="form" role="form" method="post" autocomplete="off">
                     <div class="form-group">
-                        <div class="default-select" id="default-select" name="subee">
+                        <div class="default-select" id="default-select" name="branchId">
                             @*<select>
                                     <option value="" disabled selected hidden>Şube seçiniz</option>
                                     <option value="1">_Paris</option>
                                     <option value="1">_New york</option>
                                 </select>*@
-                            <select name="subee" required>
+                            <select name="branchName" required>
                                 <option value="" disabled selected hidden>Şube seçiniz</option>
-                                <option value="1">_Paris</option>
-                                <option value="1">_New york</option>
+                                @foreach (var _branch in Model.Branches)
+                                {
+                                    <option value="@_branch.BranchName">@_branch.BranchName</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -51,7 +53,7 @@
                         </div>
                         <div class="col-md-6 wrap-right">
                             <div class="input-group dates-wrap">
-                                <input id="datepicker" class="dates form-control" id="exampleAmount" name="teslimal" placeholder="Tarih seçiniz" type="text">
+                                <input id="datepicker" class="dates form-control" id="exampleAmount" name="rentedDate" placeholder="Tarih seçiniz" type="text">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
                                 </div>
@@ -64,7 +66,7 @@
                         </div>
                         <div class="col-md-6 wrap-right">
                             <div class="input-group dates-wrap">
-                                <input id="datepicker2" class="dates form-control" id="exampleAmount" name="teslimver" placeholder="Tarih seçiniz" type="text">
+                                <input id="datepicker2" class="dates form-control" id="exampleAmount" name="deliveryDate" placeholder="Tarih seçiniz" type="text">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
                                 </div>
@@ -251,3 +253,10 @@
 <!-- Start blog Area -->
 <!-- End blog Area -->
 <!-- start footer Area -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#datepicker").datepicker({ dateFormat: 'dd/mm/yyyy' }).val();
+    });
+</script>

@@ -41,6 +41,11 @@ namespace RentACar.Dal.Concrete.EntityFramework
             return db.Car.ToList();
         }
 
+        public List<Car> GetThreeCars()
+        {
+            return db.Car.Take(3).ToList();
+        }
+
         public void SaveCar(Car car, Vehicle vehicle)
         {
             car.Vehicle = vehicle;

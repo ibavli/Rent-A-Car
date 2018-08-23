@@ -23,6 +23,12 @@ namespace RentACar.Dal.Concrete.EntityFramework
             return db.Branch.ToList();
         }
 
+        public List<Car> GetBranchesCars(string branchName)
+        {
+            var branh = db.Branch.Where(b => b.BranchName == branchName).FirstOrDefault();
+            return branh.BranchCars;
+        }
+
         public List<Branch> GetBranchesCityName(string city)
         {
             return db.Branch.Where(b=>b.BranchCity == city).ToList();
