@@ -1,8 +1,134 @@
-﻿
+﻿@model List<RentACar.Entities.Car>
 @{
     ViewBag.Title = "Sonuclar";
     Layout = "~/Views/Shared/_LayoutiBavli.cshtml";
 }
+<style>
+    .param {
+        margin-bottom: 7px;
+        line-height: 1.4;
+    }
 
-<h2>Sonuclar</h2>
+    .param-inline dt {
+        display: inline-block;
+    }
 
+    .param dt {
+        margin: 0;
+        margin-right: 7px;
+        font-weight: 600;
+    }
+
+    .param-inline dd {
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    .param dd {
+        margin: 0;
+        vertical-align: baseline;
+    }
+
+    .shopping-cart-wrap .price {
+        color: #007bff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 5px;
+        display: block;
+    }
+
+    var {
+        font-style: normal;
+    }
+
+    .media img {
+        margin-right: 1rem;
+    }
+
+    .img-sm {
+        width: 90px;
+        max-height: 75px;
+        object-fit: cover;
+    }
+</style>
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    _Şubesi için sonuçlar
+                </h1>
+                <p class="text-white link-nav"><a href="/iBavli/AnaSayfa">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span> Elements</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-area section-gap" id="review">
+    <div class="container">
+        <div class="card">
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                    <tr>
+                        <th scope="col">Vasıta</th>
+                        <th scope="col">Yakıt Tipi</th>
+                        <th scope="col">Vites Tipi</th>
+                        <th scope="col">Yakıt</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var car in Model)
+                    {
+                        <tr>
+                            <td>
+                                <figure class="media">
+                                    <div class="img-wrap"><img src="~/CarsPhotos/@car.Vehicle.VehiclePhoto" class="img-thumbnail img-sm"></div>
+                                    <figcaption class="media-body">
+                                        <h6 class="title text-truncate"><span style="color:red;font-weight:bold">@(car.Vehicle.VehicleBrand + " " + car.Vehicle.VehicleModel)</span></h6>
+                                        <dl class="param param-inline small">
+                                            <dt>Model Yılı : </dt>
+                                            <dd>@car.Vehicle.VehicleModelYear</dd>
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dt>Koltuk Sayısı : </dt>
+                                            <dd>@car.SeatingCapacity</dd>
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dt>Ehliyet Yaşı : </dt>
+                                            <dd>@car.Vehicle.VehicleAgeLimit</dd>
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dt>Kasa Tipi : </dt>
+                                            <dd>@car.VehicleType</dd>
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dt>Koltuk Sayısı : </dt>
+                                            <dd>@car.SeatingCapacity</dd>
+                                        </dl>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <p>@car.Vehicle.VehicleFuel</p>
+                            </td>
+                            <td>
+                                <p>@car.GearType</p>
+                            </td>
+                            <td>
+                                <div class="price-wrap">
+                                    <var class="price">@car.Vehicle.VehiclePrice &#8378;</var>
+                                    <small class="text-muted">(Günlük)</small>
+                                </div> <!-- price-wrap .// -->
+                            </td>
+                            <td class="text-right">
+                                <button class="btn btn-outline-success">Hemen Kirala</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

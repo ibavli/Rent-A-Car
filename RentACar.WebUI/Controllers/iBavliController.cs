@@ -47,8 +47,14 @@ namespace RentACar.WebUI.Controllers
 
         public ActionResult Sonuclar()
         {
-            var branchName = TempData["branchName"];
-            return View();
+            string branchName = (string)TempData["branchName"];
+            if (branchName == null) return RedirectToAction("AnaSayfa","iBavli");
+            else
+            {
+                var model = _branchDal.GetBranchesCars(branchName);
+                return View(model);
+            }
+            
         }
     }
 }
