@@ -57,20 +57,18 @@ namespace RentACar.WebUI.Controllers
             }
             
         }
-        [HttpPost]
-        public ActionResult Sonuclar(string filter)
+        public JsonResult GetCarFilter(string filter)
         {
             if (filter == "up")
             {
                 var model = _branchDal.UpFilterResult();
-                return View(model);
+                return Json(model, JsonRequestBehavior.AllowGet);
             }
-            else if(filter == "down")
+            else
             {
                 var model = _branchDal.DownFilterResult();
-                return View(model);
+                return Json(model, JsonRequestBehavior.AllowGet);
             }
-            return RedirectToAction("Sonuclar", "iBavli");
         }
     }
 }
