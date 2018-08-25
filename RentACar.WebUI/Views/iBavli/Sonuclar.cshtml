@@ -57,14 +57,18 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    _Şubesi için sonuçlar
+                    @if (TempData["branchName"] != null)
+                    {
+                        <span>@TempData["branchName"] için sonuçlar</span>
+                    }
+
                 </h1>
                 <p class="text-white link-nav"><a href="/iBavli/AnaSayfa">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span> Elements</p>
             </div>
         </div>
     </div>
 </section>
-
+@*<form method="post" role="form" class="form" action="~/iBavli/Sonuclar">*@
 <section class="reviews-area section-gap" id="review">
     <div class="container">
         <div class="card">
@@ -75,7 +79,28 @@
                         <th scope="col">Yakıt Tipi</th>
                         <th scope="col">Vites Tipi</th>
                         <th scope="col">Yakıt</th>
-                        <th scope="col"></th>
+                        <th scope="col">
+                            @*<div class="single-element-widget mt-30">*@
+
+                            @*<div class="form-group">
+                                    <div class="default-select" id="default-select">
+                                        <select name="_filter" id="_filter" class="form-control">
+                                            <option value="" disabled selected hidden>Filtrele</option>
+                                            <option value="up">Fiyat Artan</option>
+                                            <option value="down">Fiyat Azalan</option>
+                                        </select>
+                                    </div>
+                                </div>*@
+
+                            @*</div>*@
+
+
+                            <select name="_filter" id="_filter" class="form-control">
+                                <option value="" disabled selected hidden>Filtrele</option>
+                                <option value="up">Fiyat Artan</option>
+                                <option value="down">Fiyat Azalan</option>
+                            </select>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,3 +157,28 @@
         </div>
     </div>
 </section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+    $("#_filter").change(function () {
+
+        var _filt = $(this).val();
+        if (_filt != null) {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:4445/iBavli/Sonuclar?filter=' + _filt,
+                dataType: _filt,
+                success: function (data) {
+
+                }
+            });
+        }
+
+    });
+
+
+</script>

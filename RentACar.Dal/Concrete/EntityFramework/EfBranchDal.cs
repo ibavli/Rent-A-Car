@@ -13,6 +13,11 @@ namespace RentACar.Dal.Concrete.EntityFramework
     {
         private DatabaseContext db = new DatabaseContext();
 
+        public List<Car> DownFilterResult()
+        {
+            return db.Car.OrderBy(c => c.Vehicle.VehiclePrice).ToList();
+        }
+
         public int GetBranchCount()
         {
             return db.Branch.ToList().Count();
@@ -50,6 +55,12 @@ namespace RentACar.Dal.Concrete.EntityFramework
             branch.BranchCars = _cars;
             db.Branch.Add(branch);
             db.SaveChanges();
+        }
+
+        public List<Car> UpFilterResult()
+        {
+            return db.Car.OrderByDescending(c => c.Vehicle.VehiclePrice).ToList();
+
         }
     }
 }

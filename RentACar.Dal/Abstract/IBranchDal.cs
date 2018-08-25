@@ -20,5 +20,10 @@ namespace RentACar.Dal.Abstract
         void SaveBranch(Branch branch, List<string> licensePlate);
 
         int GetBranchCount();
+
+        List<Car> UpFilterResult();
+
+        List<Car> DownFilterResult();
+
     }
 }
