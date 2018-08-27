@@ -72,7 +72,7 @@
 <section class="reviews-area section-gap" id="review">
     <div class="container">
         <div class="card">
-            <table class="table table-hover shopping-cart-wrap" id="cartable">
+            <table class="table table-hover shopping-cart-wrap">
                 <thead class="text-muted">
                     <tr>
                         <th scope="col">Vasıta</th>
@@ -103,7 +103,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="cartable">
                     @foreach (var car in Model)
                     {
                         <tr>
@@ -165,19 +165,10 @@
 
 
     $("#_filter").change(function () {
-
+        
         var _filt = $(this).val();
+        $("#cartable").empty();
         if (_filt != null) {
-            //$.ajax({
-            //    type: 'POST',
-            //    url: 'http://localhost:4445/iBavli/Sonuclar?filter=' + _filt,
-            //    dataType: _filt,
-            //    success: function (data) {
-            //        $("#cartable").empty();
-            //    }
-            //});
-
-            $("#cartable").empty();
             $.ajax({
                 type: 'GET',
                 url: 'http://localhost:4445/iBavli/GetCarFilter?filter=' + _filt,
@@ -185,7 +176,7 @@
                 dataType: 'json',
                 success: function (data) {
                     $.each(data, function (index, val) {
-                        console(val);
+                        console.log('deneme');
                     });
                 }
             });

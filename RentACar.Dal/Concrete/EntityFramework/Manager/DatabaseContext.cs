@@ -10,6 +10,23 @@ namespace RentACar.Dal.Concrete.EntityFramework.Manager
 {
     public class DatabaseContext : DbContext
     {
+        private static DatabaseContext databaseContext;
+        static object _lock = new object();
+        private DatabaseContext()
+        {
+
+        }
+        public static DatabaseContext CreateDBWithSingleton()
+        {
+            lock (_lock)
+            {
+                if (databaseContext == null)
+                {
+                    databaseContext = new DatabaseContext();
+                }
+            }
+            return databaseContext;
+        }
         public DbSet<Admin> Admin { get; set; }
         public DbSet<FuelType> FuelType { get; set; }
         public DbSet<GearType> GearType { get; set; }

@@ -48,14 +48,13 @@ namespace RentACar.WebUI.Controllers
         public ActionResult Sonuclar()
         {
             string branchName = (string)TempData["branchName"];
-            if (branchName == null) return RedirectToAction("AnaSayfa","iBavli");
+            if (branchName == null) return RedirectToAction("AnaSayfa", "iBavli");
             else
             {
                 TempData["brancName"] = branchName;
                 var model = _branchDal.GetBranchesCars(branchName);
                 return View(model);
             }
-            
         }
         public JsonResult GetCarFilter(string filter)
         {
@@ -63,6 +62,7 @@ namespace RentACar.WebUI.Controllers
             {
                 var model = _branchDal.UpFilterResult();
                 return Json(model, JsonRequestBehavior.AllowGet);
+
             }
             else
             {
@@ -70,5 +70,7 @@ namespace RentACar.WebUI.Controllers
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
         }
+
+
     }
 }

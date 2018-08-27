@@ -11,8 +11,8 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfVehicleTypeDal : IVehicleTypeDal
     {
-        private DatabaseContext db = new DatabaseContext();
-
+        //private DatabaseContext db = new DatabaseContext();
+        DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public void DeleteVehicleType(Guid id)
         {
             VehicleType vehicleType = db.VehicleType.Where(v => v.VehicleTypeId == id).FirstOrDefault();

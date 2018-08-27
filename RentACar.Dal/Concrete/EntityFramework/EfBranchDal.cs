@@ -11,8 +11,8 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfBranchDal : IBranchDal
     {
-        private DatabaseContext db = new DatabaseContext();
-
+        //private DatabaseContext db = new DatabaseContext();
+        DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public List<Car> DownFilterResult()
         {
             return db.Car.OrderBy(c => c.Vehicle.VehiclePrice).ToList();
