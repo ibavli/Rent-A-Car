@@ -11,7 +11,6 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfFuelTypeDal : IFuelTypeDal
     {
-        //private DatabaseContext db = new DatabaseContext();
         DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public void DeleteFuelType(Guid id)
         {

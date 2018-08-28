@@ -10,7 +10,9 @@ namespace RentACar.Dal.Abstract
     public interface IAdminDal
     {
         void CreateAdmin(Admin admin);
+
         Admin GetAdmin(string Username);
+
         void SaveWrongPassword(Admin admin);
     }
 }

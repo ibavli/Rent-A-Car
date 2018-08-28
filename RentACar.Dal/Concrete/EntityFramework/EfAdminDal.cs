@@ -11,7 +11,6 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfAdminDal : IAdminDal
     {
-        //private DatabaseContext db = new DatabaseContext();
         DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public void CreateAdmin(Admin admin)
         {

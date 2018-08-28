@@ -12,14 +12,15 @@ namespace RentACar.WebUI.Controllers
 {
     public class iBavliController : Controller
     {
+        //Kötü yöntem.Fakat ileride düzeltilecek.
         IBranchDal _branchDal;
         ICarDal _carDal;
-
         public iBavliController()
         {
             _branchDal = new EfBranchDal();
             _carDal = new EfCarDal();
         }
+
         public ActionResult AnaSayfa()
         {
             iBavliHomePageViewModel model = new iBavliHomePageViewModel()
@@ -62,12 +63,13 @@ namespace RentACar.WebUI.Controllers
             {
                 var model = _branchDal.UpFilterResult();
                 return Json(model, JsonRequestBehavior.AllowGet);
-
+                //This works, but jquery not works.
             }
             else
             {
                 var model = _branchDal.DownFilterResult();
                 return Json(model, JsonRequestBehavior.AllowGet);
+                //This works, but jquery not works.
             }
         }
 

@@ -11,7 +11,6 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfVehicleDal : IVehicleDal
     {
-        //private DatabaseContext db = new DatabaseContext();
         DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public List<Vehicle> GetVehicles()
         {

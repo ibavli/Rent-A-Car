@@ -15,7 +15,7 @@ namespace RentACar.WebUI.Controllers
     public class AdminController : Controller
     {
 
-        //İleride düzeltilecek.
+        //Kötü yöntem.Fakat ileride düzeltilecek.
         IAdminDal _adminDal;
         ICarDal _carDal;
         IBranchDal _branchDal;

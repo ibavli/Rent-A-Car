@@ -14,7 +14,7 @@ namespace RentACar.WebUI.Controllers
     [AuthFilter]
     public class AdminPanelController : Controller
     {
-        //Kötü yöntem. Fakat şimdilik böyle
+        //Kötü yöntem.Fakat ileride düzeltilecek.
         IFuelTypeDal _fuelTypeDal;
         IGearTypeDal _gearTypeDal;
         IVehicleTypeDal _vehicleTypeDal;
@@ -33,11 +33,6 @@ namespace RentACar.WebUI.Controllers
 
         public ActionResult Homepage()
         {
-            var ASDF = _branchDal.GetBranches();
-            foreach (var item in ASDF)
-            {
-                var asdf = item;
-            }
             return View();
         }
 

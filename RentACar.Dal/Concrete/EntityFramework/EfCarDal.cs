@@ -11,7 +11,6 @@ namespace RentACar.Dal.Concrete.EntityFramework
 {
     public class EfCarDal : ICarDal
     {
-        //private DatabaseContext db = new DatabaseContext();
         DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
         public void DeleteCar(string licensePlate)
         {
