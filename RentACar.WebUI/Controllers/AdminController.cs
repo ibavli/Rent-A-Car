@@ -72,12 +72,28 @@ namespace RentACar.WebUI.Controllers
                             mySessionModel.BranchCount = _branchDal.GetBranchCount();
                             Session["login"] = mySessionModel;
                             return RedirectToAction("Homepage", "AdminPanel");
-                        }                  
+                        }
+                        else
+                        {
+                            TempData["blocked"] = "Hesabınız aktif değildir. Lütfen epostanızdan kontrol ediniz.";
+                            return View();
+                        }
                     }
                     else
                     {
-                        _adminDal.SaveWrongPassword(admin);
-                        TempData["wrongpassword"] = "Parolanızı yanlış girdiniz. 5 kere üst üste yanlış girerseniz hesabınız bloke olacaktır!";
+                        if (admin.IsAccountActive == true)
+                        {
+                            if (admin.PasswordEnteredIncorrectly == 4)
+                            {
+                                _adminDal.BlockedAdmin(admin);
+                            }
+                            else
+                            {
+                                _adminDal.SaveWrongPassword(admin);
+                                TempData["wrongpassword"] = "Parolanızı yanlış girdiniz. 5 kere üst üste yanlış girerseniz hesabınız bloke olacaktır!";
+                            }
+                        }
+                                  
                     }
 
 

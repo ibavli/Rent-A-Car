@@ -54,6 +54,14 @@
                                 @TempData["wrongpassword"]
                             </div>
                         }
+                        else if (TempData["blocked"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>
+                                <span class="sr-only">Hata:</span>
+                                @TempData["blocked"]
+                            </div>
+                        }
                         <div class="clearfix"></div>
                         <div class="separator">
 

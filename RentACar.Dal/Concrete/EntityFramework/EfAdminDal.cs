@@ -12,6 +12,18 @@ namespace RentACar.Dal.Concrete.EntityFramework
     public class EfAdminDal : IAdminDal
     {
         DatabaseContext db = DatabaseContext.CreateDBWithSingleton();
+
+        public void BlockedAdmin(Admin admin)
+        {
+            Admin _admin = db.Admin.Where(a=>a.AdminId == admin.AdminId).FirstOrDefault();
+            if (_admin != null)
+            {
+                _admin.PasswordEnteredIncorrectly = 0;
+                _admin.IsAccountActive = false;
+                db.SaveChanges();
+            }
+        }
+
         public void CreateAdmin(Admin admin)
         {
             db.Admin.Add(admin);

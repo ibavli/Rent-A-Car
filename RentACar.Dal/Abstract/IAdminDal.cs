@@ -14,5 +14,7 @@ namespace RentACar.Dal.Abstract
         Admin GetAdmin(string Username);
 
         void SaveWrongPassword(Admin admin);
+
+        void BlockedAdmin(Admin admin);
     }
 }
