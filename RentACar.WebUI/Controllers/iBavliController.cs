@@ -12,15 +12,13 @@ namespace RentACar.WebUI.Controllers
 {
     public class iBavliController : Controller
     {
-        //Kötü yöntem.Fakat ileride düzeltilecek.
         IBranchDal _branchDal;
         ICarDal _carDal;
-        public iBavliController()
+        public iBavliController(IBranchDal branchDal, ICarDal carDal)
         {
-            _branchDal = new EfBranchDal();
-            _carDal = new EfCarDal();
+            _branchDal = branchDal;
+            _carDal = carDal;
         }
-
         public ActionResult AnaSayfa()
         {
             iBavliHomePageViewModel model = new iBavliHomePageViewModel()

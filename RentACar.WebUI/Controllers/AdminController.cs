@@ -14,16 +14,14 @@ namespace RentACar.WebUI.Controllers
 {
     public class AdminController : Controller
     {
-
-        //Kötü yöntem.Fakat ileride düzeltilecek.
         IAdminDal _adminDal;
         ICarDal _carDal;
         IBranchDal _branchDal;
-        public AdminController()
+        public AdminController(IAdminDal adminDal, ICarDal carDal, IBranchDal branchDal)
         {
-            _adminDal = new EfAdminDal();
-            _carDal = new EfCarDal();
-            _branchDal = new EfBranchDal();
+            _adminDal = adminDal;
+            _carDal = carDal;
+            _branchDal = branchDal;
         }
         public ActionResult Login()
         {

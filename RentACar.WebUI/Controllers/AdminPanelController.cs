@@ -14,23 +14,21 @@ namespace RentACar.WebUI.Controllers
     [AuthFilter]
     public class AdminPanelController : Controller
     {
-        //Kötü yöntem.Fakat ileride düzeltilecek.
         IFuelTypeDal _fuelTypeDal;
         IGearTypeDal _gearTypeDal;
         IVehicleTypeDal _vehicleTypeDal;
         ICarDal _carDal;
         IVehicleDal _vehicleDal;
         IBranchDal _branchDal;
-        public AdminPanelController()
+        public AdminPanelController(IFuelTypeDal fuelTypeDal, IGearTypeDal gearTypeDal, IVehicleDal vehicleDal, IVehicleTypeDal vehicleTypeDal, ICarDal carDal, IBranchDal branchDal)
         {
-            _fuelTypeDal = new EfFuelTypeDal();
-            _gearTypeDal = new EfGearTypeDal();
-            _vehicleTypeDal = new EfVehicleTypeDal();
-            _carDal = new EfCarDal();
-            _vehicleDal = new EfVehicleDal();
-            _branchDal = new EfBranchDal();
+            _fuelTypeDal = fuelTypeDal;
+            _gearTypeDal = gearTypeDal;
+            _vehicleTypeDal = vehicleTypeDal;
+            _carDal = carDal;
+            _vehicleDal = vehicleDal;
+            _branchDal = branchDal;
         }
-
         public ActionResult Homepage()
         {
             return View();
